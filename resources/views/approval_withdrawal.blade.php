@@ -1,4 +1,4 @@
-@extends('layouts.app')
+	@include('layouts.app')
 
 @section('content')
 <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow" style="padding-top: 10px; margin-top: 10px;">
@@ -8,4 +8,4 @@
 
     
 </div>
-@endsection
+	@include('layouts.footer')

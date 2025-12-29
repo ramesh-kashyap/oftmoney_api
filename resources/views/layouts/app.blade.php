@@ -215,7 +215,7 @@
                             <span class="nav-text">Activation</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/active-users">Active User</a></li>
+                            <li><a href="{{asset('')}}admin/active-user">Active User</a></li>
                             <li><a href="{{asset('')}}admin/pending-user">Pending User</a></li>
 
                         </ul>
