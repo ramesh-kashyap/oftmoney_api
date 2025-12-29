@@ -65,9 +65,9 @@ Route::middleware('auth') ->prefix('admin')->name('admin.')->group(function () {
     
 
     Route::get('/deposit-report', [IncomeController::class,'depositReport'])->name('deposit-report');
-    Route::post('/deposit/status-update', [IncomeController::class, 'updateStatus'])->name('deposit-statusUpdate');
+    Route::post('/deposit-status-update', [IncomeController::class, 'updateStatus'])->name('deposit-statusUpdate');
 
-    Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
+    // Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
 
     Route::get("/approved-deposit", [IncomeController::class, 'ApprovedDeposit'])->name('approved-deposit');
 

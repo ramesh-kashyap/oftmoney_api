@@ -69,20 +69,93 @@ class AdminController extends Controller
     //     $Roiincome = Income::where('remarks','Roi Income');
     //     return view('dashboard', compact('Roiincome'));
     // }
-    public function activeuser(){
-         $activeUsers = TelegramUser::where('active_status' ,'Active')->paginate(10);
-        return view('active_user', compact('activeUsers'));
-    }
-    public function pendinguser(){
-         $pendingUsers = TelegramUser::where('active_status' ,'Pending')->paginate(10);
-        return view('pending-user', compact('pendingUsers'));
+    public function activeuser(Request $request)
+{
+    // 1) read search and limit
+    $search = $request->input('search');
+    $limit  = $request->input('limit', 10);   // default 10
+
+    // 2) base query
+    $query = TelegramUser::where('active_status', 'Active');
+
+    // 3) apply search (user name, email, id etc.)
+    if (!empty($search)) {
+        $query->where(function ($q) use ($search) {
+            $q->where('first_name', 'LIKE', "%{$search}%")
+              ->orWhere('email', 'LIKE', "%{$search}%")
+              ->orWhere('telegram_id', 'LIKE', "%{$search}%");
+        });
     }
 
-     public function totaluser(){
-         $totalUsers = TelegramUser::paginate(10);
-        //  dd($totalUsers);
-        return view('total-user', compact('totalUsers'));
+    // 4) paginate with selected limit
+    $activeUsers = $query->paginate($limit);
+
+    // 5) keep search + limit in pagination links
+    $activeUsers->appends([
+        'search' => $search,
+        'limit' => $limit,
+    ]);
+
+    return view('active_user', compact('activeUsers', 'search', 'limit'));
+}
+
+    public function pendinguser(Request $request)
+{
+    // Get limit (default 10)
+    $limit = $request->input('limit', 10);
+
+    // Base query
+    $query = TelegramUser::where('active_status', 'Pending');
+
+    // Search filter if search box filled
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('first_name', 'like', "%$search%")
+              ->orWhere('telegram_id', 'like', "%$search%")
+              ->orWhere('email', 'like', "%$search%");
+        });
     }
+
+    // Pagination
+    $pendingUsers = $query->paginate($limit)->appends($request->all());
+
+    return view('pending-user', compact('pendingUsers'));
+}
+
+
+     public function totaluser(Request $request)
+        {
+            // Get search and limit
+            $search = $request->input('search');
+            $limit  = $request->input('limit', 10); // default 10
+
+            // Base query
+            $query = TelegramUser::query();
+
+            // Apply search filter (name, email, id, sponsor, etc.)
+            if (!empty($search)) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('first_name', 'LIKE', "%{$search}%")
+                    ->orWhere('email', 'LIKE', "%{$search}%")
+                    ->orWhere('telegram_id', 'LIKE', "%{$search}%")
+                    ->orWhere('referred_by', 'LIKE', "%{$search}%");
+                });
+            }
+
+            // Paginate using selected limit
+            $totalUsers = $query->paginate($limit);
+
+            // Preserve query string
+            $totalUsers->appends([
+                'search' => $search,
+                'limit'  => $limit,
+            ]);
+
+            return view('total-user', compact('totalUsers', 'search', 'limit'));
+        }
+
    
 
 

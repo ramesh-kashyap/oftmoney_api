@@ -20,20 +20,63 @@ class IncomeController extends Controller
         // Pass the data to the Blade view
         return view('income.roi-income', compact('roiIncomes'));
     }
-    public function depositReport(){
-         $depositReport = Investment::with('user')->paginate(20);
-        return view('deposit-report', compact('depositReport'));
+    public function depositReport(Request $request)
+{
+    // default pagination limit
+    $limit = $request->input('limit', 10);
+
+    $query = Investment::query(); // your table model name
+
+    // search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function($q) use ($search){
+            $q->where('user_id_fk', 'like', "%$search%")
+              ->orWhere('plan', 'like', "%$search%")
+              ->orWhere('token', 'like', "%$search%")
+              ->orWhere('amount', 'like', "%$search%");
+        });
     }
+
+    // paginate and keep search+limit
+    $depositReport = $query
+        ->orderBy('id','DESC')
+        ->paginate($limit)
+        ->appends($request->all());
+
+    return view('deposit-report', compact('depositReport'));
+}
+
     public function addfundreport(){
      
         $fundReport = Buyfund::paginate(20);
         return view('fund-report', compact('fundReport'));
     }
 
-     public function pendingWithdraw(){     
-        $withdrawReport = Withdraw::where('status','Pending')->paginate(10);
-        return view('wallet.pending-withdraw', compact('withdrawReport'));
+     public function pendingWithdraw(Request $request)
+{
+    $query = Withdraw::where('status', 'Pending');
+
+    // Search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('user_id_fk', 'LIKE', "%$search%")
+              ->orWhere('plan', 'LIKE', "%$search%")
+              ->orWhere('payment_mode', 'LIKE', "%$search%");
+        });
     }
+
+    // Limit (default 10)
+    $limit = $request->get('limit', 10);
+
+    $withdrawReport = $query->paginate($limit)->appends($request->all());
+
+    return view('wallet.pending-withdraw', compact('withdrawReport'));
+}
+
     public function ApprovedWithdraw(){     
         $ApprovedReport = Withdraw::where('status','Approved')->paginate(10);
         return view('wallet.approved-withdraw', compact('ApprovedReport'));
