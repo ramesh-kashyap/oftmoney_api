@@ -5,12 +5,12 @@
 
 <div class="container-fluid">
 				
-				<div class="row page-titles">
+				{{-- <div class="row page-titles">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item active"><a href="javascript:void(0)">Profit Summery </a></li>
 						<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 					</ol>
-                </div>
+                </div> --}}
                 <!-- row -->
 
 
@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Iteam List</h4>
+                                <h4 class="card-title">Daily Tasks</h4>
                             </div>
                             <div class="card-body">
                                 
