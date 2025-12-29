@@ -31,10 +31,29 @@ public function roiIncome()
         return view('fund-report', compact('fundReport'));
     }
 
-     public function pendingWithdraw(){     
-        $withdrawReport = Withdraw::where('status','Pending')->paginate(10);
-        return view('wallet.pending-withdraw', compact('withdrawReport'));
+     public function pendingWithdraw(Request $request)
+{
+    $query = Withdraw::where('status', 'Pending');
+
+    // Search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('user_id_fk', 'LIKE', "%$search%")
+              ->orWhere('plan', 'LIKE', "%$search%")
+              ->orWhere('payment_mode', 'LIKE', "%$search%");
+        });
     }
+
+    // Limit (default 10)
+    $limit = $request->get('limit', 10);
+
+    $withdrawReport = $query->paginate($limit)->appends($request->all());
+
+    return view('wallet.pending-withdraw', compact('withdrawReport'));
+}
+
     public function ApprovedWithdraw(){     
         $ApprovedReport = Withdraw::where('status','Approved')->paginate(10);
         return view('wallet.approved-withdraw', compact('ApprovedReport'));

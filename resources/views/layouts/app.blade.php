@@ -215,7 +215,8 @@
                             <span class="nav-text">Activation</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/active-users">Active User</a></li>
+                            <li><a href="{{asset('')}}admin/total-user">Total User</a></li>
+                            <li><a href="{{asset('')}}admin/active-user">Active User</a></li>
                             <li><a href="{{asset('')}}admin/pending-user">Pending User</a></li>
 
                         </ul>
@@ -238,27 +239,25 @@
                     <!--</li>-->
 
 
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-041-graph"></i>
                             <span class="nav-text">User Management</span>
                         </a>
                         <ul aria-expanded="false">
-                            <!--<li><a href="{{asset('')}}admin/userSummary">User Summary</a></li>-->
-                            <li><a href="{{asset('')}}admin/totalusers">Total Users</a></li>
+                            <li><a href="{{asset('')}}admin/total-user">Total Users</a></li>
                             <li><a href="{{asset('')}}admin/edit-users">Edit User</a></li>
                             <li><a href="{{asset('')}}admin/block-users">Block User</a></li>
 
                         </ul>
-                    </li>
+                    </li> -->
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
                             <span class="nav-text">Deposit </span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/depodit-request">Pending Deposit</a></li>
-                            <li><a href="{{asset('')}}admin/rejected-deposit">Rejected Deposit</a></li>
-                            <li><a href="{{asset('')}}admin/depodit-list">Approved Deposit</a></li>
-
+                            <li><a href="{{asset('')}}admin/deposit-report">Deposite Report</a></li>
+                            <li><a href="{{asset('')}}admin/fund-report">Fund Report</a></li>
+                            <li><a href="{{asset('')}}admin/add-funds">Add Funds</a></li>
 
                         </ul>
                     </li>
@@ -328,7 +327,7 @@
                             <span class="nav-text">Withdrawal</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/pendingWithdrawal">Pending Withdrawal</a></li>
+                            <li><a href="{{asset('')}}admin/pending-withdraw">Pending Withdrawal</a></li>
 
                             <li><a href="{{asset('')}}admin/rejectedWithdrawal">Rejected Withdrawal</a></li>
                             <li><a href="{{asset('')}}admin/approvedWithdrawal">Approved Withdrawal</a></li>
