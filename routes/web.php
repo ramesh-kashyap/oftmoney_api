@@ -33,7 +33,8 @@ Route::get('/', function () {
 Route::get('/cryptapicallback', [ProfileController::class, 'edit'])->name('cryptapi.callback');
  Route::post('/loginAction', [AdminController::class, 'login'])->name('loginAction');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+   Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin.logout');
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
