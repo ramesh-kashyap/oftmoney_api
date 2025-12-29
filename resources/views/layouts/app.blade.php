@@ -262,13 +262,6 @@
                         </ul>
                     </li>
 
-
-                    <li><a href="{{asset('')}}admin/user-activation" class="ai-icon" aria-expanded="false">
-                            <i class="flaticon-072-printer"></i>
-                            <span class="nav-text">User Activation </span>
-                        </a>
-                    </li>
-
                     <!-- <li><a href="{{asset('')}}admin/add-price" class="ai-icon" aria-expanded="false">
                         <i class="flaticon-072-printer"></i>
                         <span class="nav-text">Change Roi </span>
