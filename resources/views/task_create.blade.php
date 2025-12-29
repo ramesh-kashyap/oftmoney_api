@@ -1,13 +1,13 @@
 
 
 	@include('layouts.app')
- <div class="content-body">
+ 
 
 
 
     <div class="content-body" style="min-height: 732px;">
-            {{-- <div class="container-fluid">
-                <div class="row page-titles">
+             <div class="container-fluid">
+                {{-- <div class="row page-titles">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active"><a href="javascript:void(0)">Settings</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Add Address</a></li>
@@ -72,7 +72,6 @@
  </div>
 
 
-</div>
 
 
 

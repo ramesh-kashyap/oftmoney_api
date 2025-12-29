@@ -83,6 +83,7 @@ Route::middleware('auth') ->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/tasks', [AdminController::class, 'tasks'])->name('tasks');
     Route::get('/daily/tasks', [AdminController::class, 'dailyTasks'])->name('daily_tasks');
+    Route::get('/change_password', [AdminC::class, 'changePassword'])->name('change_password');
 
   
     // Income
