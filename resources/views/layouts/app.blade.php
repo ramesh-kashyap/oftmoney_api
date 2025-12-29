@@ -329,8 +329,8 @@
                         <ul aria-expanded="false">
                             <li><a href="{{asset('')}}admin/pending-withdraw">Pending Withdrawal</a></li>
 
-                            <li><a href="{{asset('')}}admin/rejectedWithdrawal">Rejected Withdrawal</a></li>
-                            <li><a href="{{asset('')}}admin/approvedWithdrawal">Approved Withdrawal</a></li>
+                            <li><a href="{{asset('')}}admin/failed-withdraw">Rejected Withdrawal</a></li>
+                            <li><a href="{{asset('')}}admin/approved-withdraw">Approved Withdrawal</a></li>
                         </ul>
                     </li>
 

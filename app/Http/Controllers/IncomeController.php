@@ -77,15 +77,54 @@ class IncomeController extends Controller
     return view('wallet.pending-withdraw', compact('withdrawReport'));
 }
 
-    public function ApprovedWithdraw(){     
-        $ApprovedReport = Withdraw::where('status','Approved')->paginate(10);
-        return view('wallet.approved-withdraw', compact('ApprovedReport'));
+    public function ApprovedWithdraw(Request $request)
+{
+    $query = Withdraw::where('status', 'Approved');
+
+    // 🔍 Search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('user_id_fk', 'LIKE', "%$search%")
+              ->orWhere('plan', 'LIKE', "%$search%")
+              ->orWhere('payment_mode', 'LIKE', "%$search%");
+        });
     }
-    public function FailedWithdraw(){
-     
-        $FailedReport = Withdraw::where('status','Failed')->paginate(10);
-        return view('wallet.failed-withdraw', compact('FailedReport'));
+
+    // 📌 Limit dropdown (default 10)
+    $limit = $request->get('limit', 10);
+
+    // 📌 Pagination + keep query parameters
+    $ApprovedReport = $query->paginate($limit)->appends($request->all());
+
+    return view('wallet.approved-withdraw', compact('ApprovedReport'));
+}
+
+    public function FailedWithdraw(Request $request)
+{
+    $query = Withdraw::where('status', 'Failed');
+
+    // 🔍 Search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('user_id_fk', 'LIKE', "%$search%")
+              ->orWhere('plan', 'LIKE', "%$search%")
+              ->orWhere('payment_mode', 'LIKE', "%$search%");
+        });
     }
+
+    // 📌 limit dropdown (default 10)
+    $limit = $request->get('limit', 10);
+
+    // 📌 pagination with query string persistence
+    $FailedReport = $query->paginate($limit)->appends($request->all());
+
+    return view('wallet.failed-withdraw', compact('FailedReport'));
+}
+
      public function addfund(){
         return view('wallet.add-fund');
     }
