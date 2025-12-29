@@ -1,5 +1,4 @@
-@extends("layouts.app")
-@section("content")
+	@include('layouts.app')
 
 <style>
     body {
@@ -149,5 +148,4 @@
     </div>
 </div>
 
-
-@endsection
+	@include('layouts.footer')

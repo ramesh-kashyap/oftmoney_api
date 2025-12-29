@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+	@include('layouts.app')
 
 
 <style>
@@ -148,4 +146,4 @@
 
 </div>
 
-@endsection
+	@include('layouts.footer')
