@@ -1,0 +1,1 @@
+[28-Dec-2025 14:10:23 UTC] PHP Fatal error:  Cannot redeclare App\Models\TelegramUser::$casts in /home/rkdemolink/test.rkdemolink.live/app/Models/TelegramUser.php on line 28
