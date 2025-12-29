@@ -98,6 +98,8 @@
     }
 </style> 
 
+@include("layouts.app")
+
 <div class="page">
     <div class="container">
 
@@ -139,4 +141,7 @@
 
     </div>
 </div>
+
+
+@include("layouts.footer")
 

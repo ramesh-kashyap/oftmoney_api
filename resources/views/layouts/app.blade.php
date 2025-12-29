@@ -290,16 +290,34 @@
 
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-043-menu"></i>
-                            <span class="nav-text">Add Item</span>
+                            <span class="nav-text">Task</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/lautry"> Add Iteam</a></li>
+                            <li><a href="{{asset('')}}admin/tasks">Tasks List</a></li>
 
-                            <li><a href="{{asset('')}}admin/tasklist">Iteam List</a></li>
+                            <li><a href="{{asset('')}}admin/task/create">Create Task</a></li>
 
 
                         </ul>
                     </li>
+
+
+
+
+              <li>
+                  <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+                 <i class="flaticon-043-menu"></i>
+                 <span class="nav-text">Daily Task</span>
+               </a>
+               <ul aria-expanded="false">
+                  <li>
+                      <a href="{{ url('admin/daily/tasks') }}">Daily Tasks List</a>
+                  </li>
+                  <li>
+                      <a href="{{ url('admin/daily/create') }}">Create Daily Task</a>
+                  </li>
+              </ul>
+          </li>
 
                     <!-- <li><a href="{{asset('')}}admin/telegram_report" class="ai-icon" aria-expanded="false">
                            <i class="flaticon-072-printer"></i>
@@ -313,10 +331,10 @@
                             <span class="nav-text">Profit Summary</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{asset('')}}admin/node-bonus">Node Reward Income</a></li>
+                            <li><a href="{{asset('')}}admin/roi/income">Roi Income</a></li>
 
-                            <li><a href="{{asset('')}}admin/task-bonus">Task Reward Income</a></li>
-                            <li><a href="{{asset('')}}admin/reward-bonus">Direct Income</a></li>
+                            <li><a href="{{asset('')}}admin/level/income">Level Income</a></li>
+                            <li><a href="{{asset('')}}admin/daily/referral/income">Daily Referral Income</a></li>
                             <!--<li><a href="{{asset('')}}admin/booster-bonus">Daily Incentive</a></li>-->
                             <!--<li><a href="{{asset('')}}admin/club-bonus">Direct  Income</a></li>-->
                             <!--<li><a href="{{asset('')}}admin/activities-bonus">Activities Bonus</a></li>-->
