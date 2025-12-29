@@ -148,4 +148,10 @@ class UserTaskController extends Controller
     }
 
 
+
+            public function changePassword()
+    {
+        return view('change_password');
+    }
+
 }

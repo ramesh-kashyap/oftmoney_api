@@ -184,8 +184,9 @@ class IncomeController extends Controller
    public function levelIncome()
     {
         $levelIncomes = Income::where('remarks', 'Level Income')
-            ->orderByDesc('id')
-            ->get();
+            ->orderBy('id')
+            ->paginate(10);
+            
 
         return view('income.level-income', compact('levelIncomes'));
     }
@@ -201,11 +202,11 @@ class IncomeController extends Controller
  public function dailyReferralIncome()
     {
         // Fetch only Direct Referral Income rows
-        $referralIncomes = Income::where('remarks', 'Direct Referral Income')
-            ->orderByDesc('id')
-            ->get();
+        $dailyReferralIncomes = Income::where('remarks', 'Referral Income')
+            ->orderBy('id')
+            ->paginate(10);
 
-        return view('income.daily-referral-income', compact('referralIncomes'));
+        return view('income.daily-referral-income', compact('dailyReferralIncomes'));
     }
 
 
@@ -232,8 +233,6 @@ class IncomeController extends Controller
         return view('approval_deposite'); 
         // resources/views/approval_deposite.blade.php
     }
-
-
 
     
 

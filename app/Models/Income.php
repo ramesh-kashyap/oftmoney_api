@@ -12,7 +12,7 @@ class Income extends Model
     protected $table = 'incomes'; // Table name
 
     protected $fillable = [
-        'user_id',
+        'id',
         'user_id_fk',
         'amt',       // your table has 'amt' column too
         'amount',
