@@ -21,10 +21,36 @@ public function roiIncome()
 }
 
 
-    public function depositReport(){
-         $depositReport = Investment::with('user')->paginate(20);
-        return view('deposit-report', compact('depositReport'));
+  public function depositReport(Request $request)
+{
+    // default pagination limit
+    $limit = $request->input('limit', 10);
+
+    $query = Investment::query(); // your table model name
+
+    // search filter
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function($q) use ($search){
+            $q->where('user_id_fk', 'like', "%$search%")
+              ->orWhere('plan', 'like', "%$search%")
+              ->orWhere('token', 'like', "%$search%")
+              ->orWhere('amount', 'like', "%$search%");
+        });
     }
+
+    // paginate and keep search+limit
+    $depositReport = $query
+        ->orderBy('id','DESC')
+        ->paginate($limit)
+        ->appends($request->all());
+
+    return view('deposit-report', compact('depositReport'));
+}
+
+
+
     public function addfundreport(){
      
         $fundReport = Buyfund::paginate(20);
