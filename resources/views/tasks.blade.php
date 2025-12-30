@@ -22,7 +22,7 @@
                             </div>
                             <div class="card-body">
                                 
-                                 <form action="https://admin.aironetwork.in/admin/tasklist" method="GET">
+                                 <form action="tasklist" method="GET">
                                         <div class="row">
                                             <div class="col-xl-4">
                                                 <div class="form-group mb-3">
@@ -46,7 +46,7 @@
                                             </div>
                                             <div class="col-xl-2">
                                                 <div class="form-group mb-3">
-                                                    <a href="https://admin.aironetwork.in/admin/tasklist" style="padding: 0.6rem 2rem;" name="reset" class="btn btn-outline-theme btn-lg d-block w-100 btn-primary" value="Reset">Reset</a>
+                                                    <a href="{{asset('')}}admin/tasks" style="padding: 0.6rem 2rem;" name="reset" class="btn btn-outline-theme btn-lg d-block w-100 btn-primary" value="Reset">Reset</a>
                                                 </div>
                                             </div>
         
@@ -99,27 +99,9 @@
                     <span class="page-link" aria-hidden="true">‹</span>
                 </li>
             
-            
-                            
-                
-                
-                                                                                        <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=2">2</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=3">3</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=4">4</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=5">5</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=6">6</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=7">7</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=8">8</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=9">9</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=10">10</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=11">11</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=12">12</a></li>
-                                                                                                <li class="page-item"><a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=13">13</a></li>
                                                                         
             
                             <li class="page-item">
-                    <a class="page-link" href="https://admin.aironetwork.in/admin/tasklist?limit=5&amp;page=2" rel="next" aria-label="Next »">›</a>
                 </li>
                     </ul>
     </nav>

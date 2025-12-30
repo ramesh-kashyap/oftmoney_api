@@ -44,16 +44,16 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/users', [AdminController::class, 'users'])->name('users');
 
     Route::get('/tasks/create', [UserTaskController::class, 'createTask'])->name('create_task');
-    Route::post('/tasks', [AdminController::class, 'storeTask'])->name('store_task');
+    Route::post('/tasks', [AdminController::class, 'storeTask'])->name('store.task');
  
     Route::get('/daily-tasks/create', [AdminController::class, 'createDailyTask'])->name('create_daily_task');
     Route::post('/daily-tasks', [AdminController::class, 'storeDailyTask'])->name('store_daily_task');
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/roi-income', [IncomeController::class, 'roiIncome'])->name('roi.income');
-    Route::get('/daily-referral-income', [IncomeController::class, 'dailyReferralIncome'])->name('daily.referral.income');
+    Route::get('/roi/income', [IncomeController::class, 'roiIncome'])->name('roi.income');
+    Route::get('/daily/referral/income', [IncomeController::class, 'dailyReferralIncome'])->name('daily.referral.income');
         
-    Route::get('/level-income', [IncomeController::class, 'levelIncome']) ->name('level.income');
+    Route::get('/level/income', [IncomeController::class, 'levelIncome']) ->name('level.income');
 
     Route::get('/active-user', [AdminController::class, 'activeuser'])->name('active.user');
     Route::get('/total-user', [AdminController::class, 'totaluser'])->name('total.user');
@@ -63,7 +63,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
     
-    
+    Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     Route::get('/deposit-report', [IncomeController::class,'depositReport'])->name('deposit-report');
     Route::post('/deposit-status-update', [IncomeController::class, 'updateStatus'])->name('deposit-statusUpdate');
@@ -79,13 +79,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
       Route::post('/add-funds-store', [IncomeController::class, 'buyFundsStore'])->name('admin.buy.funds');
 
-      Route::get('/task-create', [UserTaskController::class, 'taskCreate'])->name('task_create');
-      Route::get('/daily-create', [UserTaskController::class, 'dailyTask'])->name('daily_task_create');
+      Route::get('/task/create', [UserTaskController::class, 'taskCreate'])->name('task_create');
+      Route::get('/daily/create', [UserTaskController::class, 'dailyTask'])->name('daily_task_create');
 
 
 
     Route::get('/tasks', [AdminController::class, 'tasks'])->name('tasks');
-    Route::get('/daily-tasks', [AdminController::class, 'dailyTasks'])->name('daily_tasks');
+    Route::get('/daily/tasks', [AdminController::class, 'dailyTasks'])->name('daily_tasks');
 
   
 

@@ -11,16 +11,17 @@ use App\Models\Buyfund;
 
 class IncomeController extends Controller
 {
- public function roiIncome()
-    {
-        // Fetch only ROI Income rows
-        $roiIncomes = Income::where('remarks','ROI Income')
-            ->orderByDesc('id')
-            ->get();
-        // Pass the data to the Blade view
-        return view('income.roi-income', compact('roiIncomes'));
-    }
-    public function depositReport(Request $request)
+public function roiIncome()
+{
+    $roiIncomes = Income::where('remarks', 'ROI Income')
+        ->orderBy('id')
+        ->paginate(10); // 👈 pagination
+
+    return view('income.roi-income', compact('roiIncomes'));
+}
+
+
+  public function depositReport(Request $request)
 {
     // default pagination limit
     $limit = $request->input('limit', 10);
@@ -47,6 +48,8 @@ class IncomeController extends Controller
 
     return view('deposit-report', compact('depositReport'));
 }
+
+
 
     public function addfundreport(){
      
