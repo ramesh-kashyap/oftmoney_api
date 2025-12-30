@@ -169,6 +169,7 @@ class AdminController extends Controller
     {
         $tasks = Task::all();
         return view('tasks', compact('tasks'));
+        
     }
 
     public function createTask()
@@ -263,4 +264,15 @@ class AdminController extends Controller
         $dailyTask->delete();
         return redirect()->route('daily_tasks')->with('success', 'Daily task deleted successfully');
     }
+
+
+
+public function logout(Request $request)
+ {
+    Auth::logout();                          // logout user
+    $request->session()->invalidate();       // invalidate session
+    $request->session()->regenerateToken();  // regenerate CSRF token
+
+    return redirect()->route('login')->with('success', 'Logged out successfully');
+ }
 }
